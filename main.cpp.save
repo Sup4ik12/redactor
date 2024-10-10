@@ -6,6 +6,7 @@ struct btn
     int y;
     const char* text;
     int vn;
+    string category;
     void draw()
     {
         txSetColor(TX_BLACK);
@@ -19,29 +20,79 @@ struct btn
     }
     bool click()
     {
-        if(txMouseX < x+150 and txMouseX > x and txMouseY > y and txMouseY < y+50 and txMouseButtons() == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        
-        
+        return(txMouseX() < x+150 and txMouseX() > x and txMouseY() > y and txMouseY() < y+50 and txMouseButtons() == 1);
     }
 };
 
+struct pic
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    int W;
+    int H;
+    HDC name;
+    bool visble;
+    string category;
 
+    void draw()
+    {
+        if(visble)
+        {
+        Win32::TransparentBlt (txDC(),x,y,w,h,name,0,0,W,H,TX_WHITE);
+        }
+    }
+    bool click()
+    {
+        return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+    }
+};
+
+void space()
+{
+    //ðàáî÷àÿ îáëàñòü
+    txRectangle(0,0,1500,800);
+    txSetColor(TX_BLACK,5);
+    txSetFillColor(TX_TRANSPARENT);
+    txRectangle(100,100,1490,790);
+}
 
 int main()
 {
     txCreateWindow (1500, 800);
     txTextCursor (false);
 
-    btn b1 = {100,30,"ÊÍÎÏÊÀ",TX_GREY};
-    btn b2 = {350,30,"ÊÍÎÏÊÀ",TX_GREY};
+    int countbtn = 6;
+    int countMp = 12;
+    int countCp = 0;
+    
+    btn btn[countbtn];
+    btn[0] = {100,30,"ÂÀÇÛ",TX_GREY,"ÂÀÇÛ"};
+    btn[1] = {350,30,"ÔÐÓÊÒÎÂÍÈÖÛ",TX_GREY,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+    btn[2] = {600,30,"ÔÐÓÊÒÛ",TX_GREY,"ÔÐÓÊÒÛ"};
+    btn[3] = {850,30,"ßÃÎÄÛ",TX_GREY,"ßÃÎÄÛ"};
+    btn[4] = {1100,30,"ÁÓËÎ×ÊÈ",TX_GREY,"ÁÓËÎ×ÊÈ"};
+    btn[5] = {1350,30,"ÖÂÅÒÛ",TX_GREY,"ÖÂÅÒÛ"};
 
+    pic Mp[countMp];
+    Mp[0] = {0,100,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà1.bmp"),false,"ÂÀÇÛ"};
+    Mp[1] = {0,220,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà2.bmp"),false,"ÂÀÇÛ"};
+    Mp[2] = {0,340,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà3.bmp"),false,"ÂÀÇÛ"};
+
+    Mp[3] = {0,100,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+    Mp[4] = {0,220,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+    Mp[5] = {0,340,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+
+    Mp[6] = {0,100,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê1.bmp"),false,"ÖÂÅÒÛ"};
+    Mp[7] = {0,220,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê2.bmp"),false,"ÖÂÅÒÛ"};
+    Mp[8] = {0,340,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê3.bmp"),false,"ÖÂÅÒÛ"};
+
+    Mp[9] = {0,100,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÛ"};
+    Mp[10] = {0,220,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÛ"};
+    Mp[11] = {0,340,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÛ"};
+
+    pic Cp[100];
 
     while(!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -49,23 +100,55 @@ int main()
         txSetFillColor(TX_WHITE);
         txClear();
         txBegin();
-
-        //ðàáî÷àÿ îáëàñòü
-        txRectangle(0,0,1500,800);
-        txSetColor(TX_BLACK,5);
-        txSetFillColor(TX_TRANSPARENT);
-        txRectangle(100,100,1490,790);
+        space();
         //êíîïêà
-        b1.draw();
-        b2.draw();
+        for (int i=0; i<countbtn; i++)
+        {
+            btn[i].draw();
+        }
+        for (int i=0; i<countMp; i++)
+        {
+            Mp[i].draw();
+        }
+
+        for (int i=0; i<countMp; i++)
+        {
+            if(Mp[pic_i].click = true)
+            {
+                Cp[countCp] = {700,300,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+                countCp ++;
+            }
+        }
+        
 
 
-
-
+        for (int btn_i=0; btn_i<countbtn; btn_i++)
+        {
+            if(btn[btn_i].click())
+            {
+                for (int pic_i=0; pic_i<countMp; pic_i++)
+                {
+                    Mp[pic_i].visble = false;
+                    if(Mp[pic_i].category == btn[btn_i].category)
+                    {
+                        Mp[pic_i].visble = true;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
         txEnd();
 
     }
-    txSleep(10);
+
+for (int i=0; i<countMp; i++)
+{
+    txDeleteDC(Mp[i].name);
+}
+
     txTextCursor (false);
     txDisableAutoPause();
     return 0;

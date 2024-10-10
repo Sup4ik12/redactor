@@ -1,0 +1,92 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Desktop\redactor-main\main.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433. Попытка записать данные по адресу 0x004CE84E в модуле C:\Users\user\Desktop\redactor-main\main.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x2A6C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Desktop\redactor-main\main.cpp:48:
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\user\desktop\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 10 2024 15:01:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 10 2024 15:01:57
+
+Run file:	C:\Users\user\Desktop\redactor-main\main.exe
+Directory:	C:\Users\user\Desktop\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Desktop\redactor-main\main.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433. Попытка записать данные по адресу 0x004CE84E в модуле C:\Users\user\Desktop\redactor-main\main.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x2A6C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Desktop\redactor-main\main.cpp:48:
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 173, Date: 2024-06-23 22:37:05 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\user\desktop\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 10 2024 15:01:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 10 2024 15:01:57
+
+Run file:	C:\Users\user\Desktop\redactor-main\main.exe
+Directory:	C:\Users\user\Desktop\redactor-main
+
+--------------------------------------------------
