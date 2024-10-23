@@ -1,0 +1,1364 @@
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x1B3C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:30:18
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x1B3C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:30:17
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x16C0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:33:15
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x16C0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:33:15
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x273C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:33:34
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x273C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:33:35
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x25D0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:37:31
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x25D0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:37:31
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x2ED8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:37:51
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x2ED8 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048101A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488F13 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CD86 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4DD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (118):
+
+    116:             if(Mp[i].click() == true)
+    117:             {
+=>  118:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    119:                 countCp ++;
+    120:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:29:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:37:51
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x1D5C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x004810DA in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488FD3 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CE46 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4E0 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (121):
+
+    119:             if(Mp[i].click() == true)
+    120:             {
+=>  121:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    122:                 countCp ++;
+    123:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:42:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:43:04
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x1D5C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x004810DA in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00488FD3 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CE46 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D4E0 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (121):
+
+    119:             if(Mp[i].click() == true)
+    120:             {
+=>  121:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    122:                 countCp ++;
+    123:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool pic::click() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (48):
+
+     46:     bool click()
+     47:     {
+=>   48:         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
+     49:     }
+     50: };
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:42:44, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:43:03
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10865, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x1C28 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004107AC in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _txBuffer_Delete() at c:/codeblocks/codeblocks/mingw/include/txlib.h (10865)
+# 1 0x00421EB8 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txDeleteDC() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13617)
+# 2 0x00422128 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txDeleteDC() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13639)
+
+# 3 0x0042D778 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (163):
+
+    161: for (int i=0; i<countCp; i++)
+    162: {
+=>  163:     txDeleteDC(Cp[i].name);
+    164: }
+    165: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::_txBuffer_Delete(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h (10865):
+
+  10863: $1  if (_TX_ARGUMENT_FAILED (dc)) return false;
+  10864: $   if (                   !*dc)  return false;
+=>10865: $   if (_TX_HDC_FAILED     (*dc)) return false;
+  10866: 
+  10867: $   if (!Win32::GetObjectType (Win32::GetCurrentObject (*dc, OBJ_BITMAP))) return false;
+
+# 1 in bool {anonymous}::TX::txDeleteDC(HDC__**) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13617):
+
+  13615: 
+  13616: $   HDC  dc = *pdc;
+=>13617: $   bool ok = _txBuffer_Delete (pdc);
+  13618: $   if (!ok) return false;
+  13619: 
+
+# 2 in bool {anonymous}::TX::txDeleteDC(HDC) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13639):
+
+  13637: bool txDeleteDC (HDC dc)
+  13638:     {
+=>13639: $1  return txDeleteDC (&dc);
+  13640:     }
+  13641: 
+
+# 3 in int main() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (163):
+
+    161: for (int i=0; i<countCp; i++)
+    162: {
+=>  163:     txDeleteDC(Cp[i].name);
+    164: }
+    165: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:49:52, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:50:11
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x2004 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048112A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00489023 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CE96 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D535 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (125):
+
+    123:                     txSleep(1);
+    124:                 }
+=>  125:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    126:                 countCp ++;
+    127:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (121):
+
+    119:             if(Mp[i].click() == true)
+    120:             {
+=>  121:                 while(txMouseButtons() == 1)
+    122:                 {
+    123:                     txSleep(1);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:55:06, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:55:25
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x00401433 в функции __exchange_and_add() в файле c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h на строке 47. Попытка записать данные по адресу 0x004CE84A в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x005092FC (32-bit), Flags: CMdRe0, Thread: 0x2004 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00401433 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (47):
+
+     45:   static inline _Atomic_word 
+     46:   __exchange_and_add(volatile _Atomic_word* __mem, int __val)
+=>   47:   { return __atomic_fetch_add(__mem, __val, __ATOMIC_ACQ_REL); }
+     48: 
+     49:   static inline void
+
+# 1 0x004014A5 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: __exchange_and_add_dispatch() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/ext/atomicity.h (80):
+
+     78: #ifdef __GTHREADS
+     79:     if (__gthread_active_p())
+=>   80:       return __exchange_and_add(__mem, __val);
+     81:     else
+     82:       return __exchange_and_add_single(__mem, __val);
+
+# 2 0x0048112A in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_dispose() at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x00489023 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0044CE96 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe at c:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 5 0x0042D535 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (125):
+
+    123:                     txSleep(1);
+    124:                 }
+=>  125:                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+    126:                 countCp ++;
+    127:             }
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (121):
+
+    119:             if(Mp[i].click() == true)
+    120:             {
+=>  121:                 while(txMouseButtons() == 1)
+    122:                 {
+    123:                     txSleep(1);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Oct 23 2024 11:55:06, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Oct 23 2024 11:55:25
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------

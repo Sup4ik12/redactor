@@ -55,7 +55,7 @@ void space()
     txRectangle(0,0,1500,800);
     txSetColor(TX_BLACK,5);
     txSetFillColor(TX_TRANSPARENT);
-    txRectangle(100,100,1490,790);
+    txRectangle(150,100,1490,790);
 }
 
 int main()
@@ -66,6 +66,10 @@ int main()
     int countbtn = 6;
     int countMp = 12;
     int countCp = 0;
+
+    char str[50];
+    int vibor = -1;
+    int MouseUp = false;
 
     btn btn[countbtn];
     btn[0] = {100,30,"ВАЗЫ",TX_GREY,"ВАЗЫ"};
@@ -101,31 +105,35 @@ int main()
         txClear();
         txBegin();
         space();
-        //кнопка
+        //рисование кнопка
         for (int i=0; i<countbtn; i++)
         {
             btn[i].draw();
         }
+        //рисование картинок в меню
         for (int i=0; i<countMp; i++)
         {
             Mp[i].draw();
         }
-
+        //условие клика картинок в меню
         for (int i=0; i<countMp; i++)
         {
-            if(Mp[i].click() == true)
+            if(Mp[i].click() == true and Mp[i].visble)
             {
+                while(txMouseButtons() == 1)
+                {
+                    txSleep(1);
+                }
                 Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
                 countCp ++;
             }
         }
-
+        //рисование картинок в центре
         for (int i=0; i<countCp; i++)
         {
             Cp[i].draw();
         }
-
-
+        //смена картинок в меню
         for (int btn_i=0; btn_i<countbtn; btn_i++)
         {
             if(btn[btn_i].click())
@@ -140,9 +148,50 @@ int main()
                 }
             }
         }
+        //движение картинок в раб.области
+        for(int i=0; i<countCp; i++)
+        {
+            if(Cp[i].click())
+            {
+                vibor = i;
+                MouseUp = false;
+            }
+
+        }
+        //перемещение мышкой обьектов в центре
+        if(vibor>=0)
+        {
+            if(txMouseButtons() == 1 and !MouseUp)
+            {
+            Cp[vibor].x = txMouseX()-Cp[vibor].w/2;
+            Cp[vibor].y = txMouseY()-Cp[vibor].h/2;
+            }
+        }
+        else
+        {
+            if(txMouseButtons() != 1)
+            {
+                MouseUp = true;
+            }
+        }
+        //увеличение и уменьшение размеров
+        if(vibor>=0)
+        {
+            if(GetAsyncKeyState(VK_OEM_PLUS))
+            {
+                Cp[vibor].w = Cp[vibor].w * 1.01;
+                Cp[vibor].h = Cp[vibor].h * 1.01;
+            }
+            if(GetAsyncKeyState(VK_OEM_MINUS))
+            {
+                Cp[vibor].w = Cp[vibor].w / 1.01;
+                Cp[vibor].h = Cp[vibor].h / 1.01;
+            }
+        }
 
 
-
+        sprintf(str, "%d", countCp);
+        txTextOut(10,10,str);
 
         txEnd();
 
@@ -151,6 +200,10 @@ int main()
 for (int i=0; i<countMp; i++)
 {
     txDeleteDC(Mp[i].name);
+}
+for (int i=0; i<countCp; i++)
+{
+    txDeleteDC(Cp[i].name);
 }
 
     txTextCursor (false);
