@@ -1,10 +1,13 @@
 #include "TXLib.h"
+#include <iostream>
+#include <fstream>
 
 struct btn
 {
     int x;
     int y;
     const char* text;
+    int textC;
     int vn;
     string category;
     void draw()
@@ -16,6 +19,7 @@ struct btn
         txSetFillColor(vn);
         Win32::RoundRect (txDC(), x,y, x+150, y+50, 52, 52);
         txSelectFont("Times New Roman",20);
+        txSetColor(textC);
         txDrawText(x,y,x+150,y+50, text);
     }
     bool click()
@@ -35,6 +39,7 @@ struct pic
     HDC name;
     bool visble;
     string category;
+    string adress;
 
     void draw()
     {
@@ -63,7 +68,7 @@ int main()
     txCreateWindow (1500, 800);
     txTextCursor (false);
 
-    int countbtn = 6;
+    int countbtn = 7;
     int countMp = 12;
     int countCp = 0;
 
@@ -72,29 +77,30 @@ int main()
     int MouseUp = false;
 
     btn btn[countbtn];
-    btn[0] = {100,30,"ÂÀÇÛ",TX_GREY,"ÂÀÇÛ"};
-    btn[1] = {350,30,"ÔÐÓÊÒÎÂÍÈÖÛ",TX_GREY,"ÔÐÓÊÒÎÂÍÈÖÛ"};
-    btn[2] = {600,30,"ÔÐÓÊÒÛ",TX_GREY,"ÔÐÓÊÒÛ"};
-    btn[3] = {850,30,"ßÃÎÄÛ",TX_GREY,"ßÃÎÄÛ"};
-    btn[4] = {1100,30,"ÁÓËÎ×ÊÈ",TX_GREY,"ÁÓËÎ×ÊÈ"};
-    btn[5] = {1350,30,"ÖÂÅÒÛ",TX_GREY,"ÖÂÅÒÛ"};
+    btn[0] = {100,30,"ÂÀÇÛ",TX_BLACK,TX_GREY,"ÂÀÇÛ"};
+    btn[1] = {300,30,"ÔÐÓÊÒÎÂÍÈÖÛ",TX_BLACK,TX_GREY,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+    btn[2] = {500,30,"ÔÐÓÊÒÛ",TX_BLACK,TX_GREY,"ÔÐÓÊÒÛ"};
+    btn[3] = {700,30,"ßÃÎÄÛ",TX_BLACK,TX_GREY,"ßÃÎÄÛ"};
+    btn[4] = {900,30,"ÖÂÅÒÛ",TX_BLACK,TX_GREY,"ÖÂÅÒÛ"};
+    btn[5] = {1100,30,"ÑÎÕÐÀÍÈÒÜ",TX_WHITE,TX_GREEN,""};
+    btn[6] = {1300,30,"ÇÀÃÐÓÇÈÒÜ",TX_WHITE,TX_GREEN,""};
 
     pic Mp[countMp];
-    Mp[0] = {0,100,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà1.bmp"),false,"ÂÀÇÛ"};
-    Mp[1] = {0,220,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà2.bmp"),false,"ÂÀÇÛ"};
-    Mp[2] = {0,340,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà3.bmp"),false,"ÂÀÇÛ"};
+    Mp[0] = {0,100,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà1.bmp"),false,"ÂÀÇÛ","êàðòèíêè\\âàçû\\âàçà1.bmp"};
+    Mp[1] = {0,220,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà2.bmp"),false,"ÂÀÇÛ","êàðòèíêè\\âàçû\\âàçà2.bmp"};
+    Mp[2] = {0,340,120,120,700,700,txLoadImage("êàðòèíêè\\âàçû\\âàçà3.bmp"),false,"ÂÀÇÛ","êàðòèíêè\\âàçû\\âàçà3.bmp"};
 
-    Mp[3] = {0,100,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
-    Mp[4] = {0,220,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
-    Mp[5] = {0,340,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ"};
+    Mp[3] = {0,100,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ","êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò1.bmp"};
+    Mp[4] = {0,220,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ","êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò2.bmp"};
+    Mp[5] = {0,340,120,120,500,500,txLoadImage("êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÎÂÍÈÖÛ","êàðòèíêè\\ôðóêòîâíèöà\\ôðóêò3.bmp"};
 
-    Mp[6] = {0,100,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê1.bmp"),false,"ÖÂÅÒÛ"};
-    Mp[7] = {0,220,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê2.bmp"),false,"ÖÂÅÒÛ"};
-    Mp[8] = {0,340,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê3.bmp"),false,"ÖÂÅÒÛ"};
+    Mp[6] = {0,100,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê1.bmp"),false,"ÖÂÅÒÛ","êàðòèíêè\\öâåòû\\öâåòîê1.bmp"};
+    Mp[7] = {0,220,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê2.bmp"),false,"ÖÂÅÒÛ","êàðòèíêè\\öâåòû\\öâåòîê2.bmp"};
+    Mp[8] = {0,340,120,120,200,266,txLoadImage("êàðòèíêè\\öâåòû\\öâåòîê3.bmp"),false,"ÖÂÅÒÛ","êàðòèíêè\\öâåòû\\öâåòîê3.bmp"};
 
-    Mp[9] = {0,100,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÛ"};
-    Mp[10] = {0,220,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÛ"};
-    Mp[11] = {0,340,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÛ"};
+    Mp[9] = {0,100,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò1.bmp"),false,"ÔÐÓÊÒÛ","êàðòèíêè\\ôðóêòû\\ôðóêò1.bmp"};
+    Mp[10] = {0,220,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò2.bmp"),false,"ÔÐÓÊÒÛ","êàðòèíêè\\ôðóêòû\\ôðóêò2.bmp"};
+    Mp[11] = {0,340,120,120,150,150,txLoadImage("êàðòèíêè\\ôðóêòû\\ôðóêò3.bmp"),false,"ÔÐÓÊÒÛ","êàðòèíêè\\ôðóêòû\\ôðóêò3.bmp"};
 
     pic Cp[100];
 
@@ -124,7 +130,7 @@ int main()
                 {
                     txSleep(1);
                 }
-                Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category};
+                Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category,Mp[i].adress};
                 countCp ++;
             }
         }
@@ -166,27 +172,80 @@ int main()
             Cp[vibor].x = txMouseX()-Cp[vibor].w/2;
             Cp[vibor].y = txMouseY()-Cp[vibor].h/2;
             }
-        }
-        else
-        {
-            if(txMouseButtons() != 1)
+            else
             {
-                MouseUp = true;
+                if(txMouseButtons() != 1)
+                {
+                    MouseUp = true;
+                }
             }
         }
+
         //óâåëè÷åíèå è óìåíüøåíèå ðàçìåðîâ
         if(vibor>=0)
         {
-            if(GetAsyncKeyState(VK_PLUS))
+            if(GetAsyncKeyState(VK_OEM_PLUS))
+            {
+                Cp[vibor].w = Cp[vibor].w * 1.01;
+                Cp[vibor].h = Cp[vibor].h * 1.01;
+            }
+            if(GetAsyncKeyState(VK_OEM_MINUS))
+            {
+                Cp[vibor].w = Cp[vibor].w / 1.01;
+                Cp[vibor].h = Cp[vibor].h / 1.01;
+            }
         }
-
-
+        if(btn[5].click())
+        {
+            std::ofstream out;
+            out.open("result.txt");
+            if (out.is_open())
+            {
+                for(int i=0; i<countCp; i++)
+                {
+                    out << Cp[i].x << std::endl;
+                    out << Cp[i].y << std::endl;
+                    out << Cp[i].adress << std::endl;
+                    out << Cp[i].w << std::endl;
+                    out << Cp[i].h << std::endl;
+                }
+            }
+            out.close();
+        }
+        if(btn[6].click())
+        {
+            char data[50];
+            std::ifstream in("result.txt"); // îêðûâàåì ôàéë äëÿ ÷òåíèÿ
+            while (in.good)
+            {
+                std::in.getline(data, 50));
+                int x = atoi(data);
+                
+                std::in.getline(data, 50));
+                int y = atoi(data);
+                
+                std::in.getline(data, 50));
+                int adress = data;
+                
+                std::in.getline(data, 50));
+                int w = atoi(data);
+                
+                std::in.getline(data, 50));
+                int h = atoi(data);
+            }
+            in.close();
+        }
+        
+        
+        
+        
+        
         sprintf(str, "%d", countCp);
         txTextOut(10,10,str);
 
         txEnd();
-
     }
+
 
 for (int i=0; i<countMp; i++)
 {
