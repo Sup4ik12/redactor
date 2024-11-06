@@ -63,18 +63,60 @@ void space()
     txRectangle(150,100,1490,790);
 }
 
+string dialog(bool sSave)
+{
+    string FileName = "";
+
+    OPENFILENAME ofn;
+    TCHAR szFile[260];
+    HANDLE hf;
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = NULL;
+    ofn.lpstrFile = szFile;
+    ofn.lpstrFile[0] = '\0';
+    ofn.nMaxFile = sizeof(szFile);
+    ofn.lpstrFilter = "Text Files\0*.txt\0Any File\0*.\0";
+    ofn.nFilterIndex = 1;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+    hf = ofn.lpstrFile;
+
+
+    if(sSave)
+    {
+        if (GetSaveFileName(&ofn)==TRUE)
+        {
+            FileName = ofn.lpstrFile;
+            FileName = FileName + ".txt";
+        }
+    }
+    else
+    {
+        if (GetOpenFileName(&ofn)==TRUE)
+        {
+            FileName = ofn.lpstrFile;
+        }
+    }
+
+    return FileName;
+}
+
 int main()
 {
     txCreateWindow (1500, 800);
     txTextCursor (false);
 
-    int countbtn = 7;
+    int countbtn = 9;
     int countMp = 12;
     int countCp = 0;
 
     char str[50];
     int vibor = -1;
     int MouseUp = false;
+    string page = "kartina";
 
     btn btn[countbtn];
     btn[0] = {100,30,"ВАЗЫ",TX_BLACK,TX_GREY,"ВАЗЫ"};
@@ -84,6 +126,9 @@ int main()
     btn[4] = {900,30,"ЦВЕТЫ",TX_BLACK,TX_GREY,"ЦВЕТЫ"};
     btn[5] = {1100,30,"СОХРАНИТЬ",TX_WHITE,TX_GREEN,""};
     btn[6] = {1300,30,"ЗАГРУЗИТЬ",TX_WHITE,TX_GREEN,""};
+    btn[7] = {10,650,"О ПРОГРАММЕ",TX_WHITE,TX_GREEN,""};
+    btn[8] = {10,720,"ВЫХОД",TX_WHITE,TX_GREEN,""};
+
 
     pic Mp[countMp];
     Mp[0] = {0,100,120,120,700,700,txLoadImage("картинки\\вазы\\ваза1.bmp"),false,"ВАЗЫ","картинки\\вазы\\ваза1.bmp"};
@@ -104,160 +149,179 @@ int main()
 
     pic Cp[100];
 
-    while(!GetAsyncKeyState(VK_ESCAPE))
+    while(!btn[8].click())
     {
         txSetColor(TX_WHITE);
         txSetFillColor(TX_WHITE);
         txClear();
         txBegin();
-        space();
-        //рисование кнопка
-        for (int i=0; i<countbtn; i++)
+        if(page == "kartina")
         {
-            btn[i].draw();
-        }
-        //рисование картинок в меню
-        for (int i=0; i<countMp; i++)
-        {
-            Mp[i].draw();
-        }
-        //условие клика картинок в меню
-        for (int i=0; i<countMp; i++)
-        {
-            if(Mp[i].click() == true and Mp[i].visble)
+            space();
+            //рисование кнопка
+            for (int i=0; i<countbtn; i++)
             {
+                btn[i].draw();
+            }
+            //рисование картинок в меню
+            for (int i=0; i<countMp; i++)
+            {
+                Mp[i].draw();
+            }
+            //условие клика картинок в меню
+            for (int i=0; i<countMp; i++)
+            {
+                if(Mp[i].click() == true and Mp[i].visble)
+                {
+                    while(txMouseButtons() == 1)
+                    {
+                        txSleep(1);
+                    }
+                    Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category,Mp[i].adress};
+                    countCp ++;
+                }
+            }
+            //рисование картинок в центре
+            for (int i=0; i<countCp; i++)
+            {
+                Cp[i].draw();
+            }
+            //смена картинок в меню
+            for (int btn_i=0; btn_i<countbtn; btn_i++)
+            {
+                if(btn[btn_i].click())
+                {
+                    for (int pic_i=0; pic_i<countMp; pic_i++)
+                    {
+                        Mp[pic_i].visble = false;
+                        if(Mp[pic_i].category == btn[btn_i].category)
+                        {
+                            Mp[pic_i].visble = true;
+                        }
+                    }
+                }
+            }
+            //движение картинок в раб.области
+            for(int i=0; i<countCp; i++)
+            {
+                if(Cp[i].click())
+                {
+                    vibor = i;
+                    MouseUp = false;
+                }
+
+            }
+            //перемещение мышкой обьектов в центре
+            if(vibor>=0)
+            {
+                if(txMouseButtons() == 1 and !MouseUp)
+                {
+                Cp[vibor].x = txMouseX()-Cp[vibor].w/2;
+                Cp[vibor].y = txMouseY()-Cp[vibor].h/2;
+                }
+                else
+                {
+                    if(txMouseButtons() != 1)
+                    {
+                        MouseUp = true;
+                    }
+                }
+            }
+
+            //увеличение и уменьшение размеров
+            if(vibor>=0)
+            {
+                if(GetAsyncKeyState(VK_OEM_PLUS))
+                {
+                    Cp[vibor].w = Cp[vibor].w * 1.01;
+                    Cp[vibor].h = Cp[vibor].h * 1.01;
+                }
+                if(GetAsyncKeyState(VK_OEM_MINUS))
+                {
+                    Cp[vibor].w = Cp[vibor].w / 1.01;
+                    Cp[vibor].h = Cp[vibor].h / 1.01;
+                }
+            }
+            if(vibor>=0)
+            {
+                if(GetAsyncKeyState(VK_DELETE))
+                {
+                    Cp[vibor].visble = false;
+                }
+            }
+            if(btn[5].click())
+            {
+                string FileName = dialog(true);
+
+                std::ofstream out;
+                out.open(FileName);
+                if (out.is_open())
+                {
+                    for(int i=0; i<countCp; i++)
+                    {
+                        out << Cp[i].x << std::endl;
+                        out << Cp[i].y << std::endl;
+                        out << Cp[i].adress << std::endl;
+                        out << Cp[i].w << std::endl;
+                        out << Cp[i].h << std::endl;
+                    }
+                }
+                out.close();
+            }
+            if(btn[6].click())
+            {
+                string FileName = dialog(false);
+
                 while(txMouseButtons() == 1)
                 {
                     txSleep(1);
                 }
-                Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category,Mp[i].adress};
-                countCp ++;
-            }
-        }
-        //рисование картинок в центре
-        for (int i=0; i<countCp; i++)
-        {
-            Cp[i].draw();
-        }
-        //смена картинок в меню
-        for (int btn_i=0; btn_i<countbtn; btn_i++)
-        {
-            if(btn[btn_i].click())
-            {
-                for (int pic_i=0; pic_i<countMp; pic_i++)
+
+                char data[50];
+
+                std::ifstream in(FileName); // окрываем файл для чтения
+                while (in.good())
                 {
-                    Mp[pic_i].visble = false;
-                    if(Mp[pic_i].category == btn[btn_i].category)
+                    in.getline(data, 50);
+                    int x = atoi(data);
+
+                    in.getline(data, 50);
+                    int y = atoi(data);
+
+                    in.getline(data, 50);
+                    string adress = data;
+
+                    in.getline(data, 50);
+                    int w = atoi(data);
+
+                    in.getline(data, 50);
+                    int h = atoi(data);
+
+                    for (int i=0; i<countMp; i++)
                     {
-                        Mp[pic_i].visble = true;
+                        if(Mp[i].adress == adress)
+                        {
+                            Cp[countCp] = {x,y,w,h,Mp[i].W,Mp[i].H,Mp[i].name,true,Mp[i].category,adress};
+                            countCp ++;
+                        }
                     }
                 }
+                in.close();
+            }
+            if(btn[7].click())
+            {
+                page = "help";
             }
         }
-        //движение картинок в раб.области
-        for(int i=0; i<countCp; i++)
+        if(page == "help")
         {
-            if(Cp[i].click())
+            if(GetAsyncKeyState(VK_ESCAPE))
             {
-                vibor = i;
-                MouseUp = false;
+                page = "kartina";
             }
-
+            txSelectFont("Times New Roman",55);
+            txDrawText(0,0,1500,800,"Чтобы вернуться нажмите ESC");
         }
-        //перемещение мышкой обьектов в центре
-        if(vibor>=0)
-        {
-            if(txMouseButtons() == 1 and !MouseUp)
-            {
-            Cp[vibor].x = txMouseX()-Cp[vibor].w/2;
-            Cp[vibor].y = txMouseY()-Cp[vibor].h/2;
-            }
-            else
-            {
-                if(txMouseButtons() != 1)
-                {
-                    MouseUp = true;
-                }
-            }
-        }
-
-        //увеличение и уменьшение размеров
-        if(vibor>=0)
-        {
-            if(GetAsyncKeyState(VK_OEM_PLUS))
-            {
-                Cp[vibor].w = Cp[vibor].w * 1.01;
-                Cp[vibor].h = Cp[vibor].h * 1.01;
-            }
-            if(GetAsyncKeyState(VK_OEM_MINUS))
-            {
-                Cp[vibor].w = Cp[vibor].w / 1.01;
-                Cp[vibor].h = Cp[vibor].h / 1.01;
-            }
-        }
-        if(btn[5].click())
-        {
-            std::ofstream out;
-            out.open("result.txt");
-            if (out.is_open())
-            {
-                for(int i=0; i<countCp; i++)
-                {
-                    out << Cp[i].x << std::endl;
-                    out << Cp[i].y << std::endl;
-                    out << Cp[i].adress << std::endl;
-                    out << Cp[i].w << std::endl;
-                    out << Cp[i].h << std::endl;
-                }
-            }
-            out.close();
-        }
-        if(btn[6].click())
-        {
-            while(txMouseButtons() == 1)
-            {
-                txSleep(1);
-            }
-
-            char data[50];
-
-            std::ifstream in("result.txt"); // окрываем файл для чтения
-            while (in.good())
-            {
-                in.getline(data, 50);
-                int x = atoi(data);
-
-                in.getline(data, 50);
-                int y = atoi(data);
-
-                in.getline(data, 50);
-                string adress = data;
-
-                in.getline(data, 50);
-                int w = atoi(data);
-
-                in.getline(data, 50);
-                int h = atoi(data);
-
-                for (int i=0; i<countMp; i++)
-                {
-                    if(Mp[i].adress == adress)
-                    {
-                        Cp[countCp] = {x,y,w,h,Mp[i].W,Mp[i].H,Mp[i].name,true,Mp[i].category,adress};
-                        countCp ++;
-                    }
-                }
-            }
-            in.close();
-        }
-
-
-
-
-
-        sprintf(str, "%d", countCp);
-        txTextOut(10,10,str);
-
         txEnd();
     }
 
