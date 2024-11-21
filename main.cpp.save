@@ -1,6 +1,9 @@
 #include "TXLib.h"
 #include <iostream>
 #include <fstream>
+#include "dirent.h"
+
+using namespace std;
 
 struct btn
 {
@@ -32,15 +35,14 @@ struct pic
 {
     int x;
     int y;
+    string adress;
+    HDC name;
     int w;
     int h;
     int W;
     int H;
-    HDC name;
-    bool visble;
     string category;
-    string adress;
-
+    bool visble;
     void draw()
     {
         if(visble)
@@ -54,13 +56,14 @@ struct pic
     }
 };
 
-void space()
+void space(HDC image)
 {
     //рабочая область
-    txRectangle(0,0,1500,800);
     txSetColor(TX_BLACK,5);
     txSetFillColor(TX_TRANSPARENT);
     txRectangle(150,100,1490,790);
+    txBitBlt(txDC(), 150,100,1340,690,image);
+
 }
 
 string dialog(bool sSave)
@@ -82,7 +85,7 @@ string dialog(bool sSave)
     ofn.nMaxFileTitle = 0;
     ofn.lpstrInitialDir = NULL;
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
-    hf = ofn.lpstrFile;
+
 
 
     if(sSave)
@@ -103,14 +106,54 @@ string dialog(bool sSave)
 
     return FileName;
 }
+int wight(string adress)
+{
+    char header[54];
+    ifstream bmp;
+    bmp.open(adress, ios::in | ios::binary);
+    bmp.read(header, 54);
+    int W = *(int *)&header[18];
+    return W;
+}
+int height(string adress)
+{
+    char header[54];
+    ifstream bmp;
+    bmp.open(adress, ios::in | ios::binary);
+    bmp.read(header, 54);
+    int H = *(int *)&header[22];
+    return H;
+}
+int readDir(string DirAdress,int countFile,pic Mp[])
+{
+    DIR *directory = opendir(DirAdress.c_str());
+    struct dirent *direntStruct;
+    int Y = 100;
 
+    if (directory != NULL)
+    {
+        while (direntStruct = readdir(directory))
+        {
+            if((string)direntStruct->d_name != "." and (string)direntStruct->d_name != "..")
+            {
+            Mp[countFile].adress = DirAdress + direntStruct->d_name;
+            Mp[countFile].x = 0;
+            Mp[countFile].y = Y;
+            countFile ++;
+            Y+=120;
+            }
+
+        }
+    }
+    return countFile;
+}
 int main()
 {
     txCreateWindow (1500, 800);
     txTextCursor (false);
 
-    int countbtn = 9;
-    int countMp = 12;
+    int countbtn = 10;
+    int countMp = 0;
     int countCp = 0;
 
     char str[50];
@@ -119,35 +162,53 @@ int main()
     string page = "kartina";
 
     btn btn[countbtn];
-    btn[0] = {100,30,"ВАЗЫ",TX_BLACK,TX_GREY,"ВАЗЫ"};
-    btn[1] = {300,30,"ФРУКТОВНИЦЫ",TX_BLACK,TX_GREY,"ФРУКТОВНИЦЫ"};
-    btn[2] = {500,30,"ФРУКТЫ",TX_BLACK,TX_GREY,"ФРУКТЫ"};
-    btn[3] = {700,30,"ЯГОДЫ",TX_BLACK,TX_GREY,"ЯГОДЫ"};
-    btn[4] = {900,30,"ЦВЕТЫ",TX_BLACK,TX_GREY,"ЦВЕТЫ"};
-    btn[5] = {1100,30,"СОХРАНИТЬ",TX_WHITE,TX_GREEN,""};
-    btn[6] = {1300,30,"ЗАГРУЗИТЬ",TX_WHITE,TX_GREEN,""};
+    btn[0] = {15,30,"ВАЗЫ",TX_BLACK,TX_GREY,"вазы"};
+    btn[1] = {195,30,"ФРУКТОВНИЦЫ",TX_BLACK,TX_GREY,"фруктовницы"};
+    btn[2] = {395,30,"ФРУКТЫ",TX_BLACK,TX_GREY,"фрукты"};
+    btn[3] = {595,30,"ЯГОДЫ",TX_BLACK,TX_GREY,"ягоды"};
+    btn[4] = {795,30,"ЦВЕТЫ",TX_BLACK,TX_GREY,"цветы"};
+    btn[5] = {1155,30,"СОХРАНИТЬ",TX_WHITE,TX_GREEN,""};
+    btn[6] = {1335,30,"ЗАГРУЗИТЬ",TX_WHITE,TX_GREEN,""};
     btn[7] = {10,650,"О ПРОГРАММЕ",TX_WHITE,TX_GREEN,""};
     btn[8] = {10,720,"ВЫХОД",TX_WHITE,TX_GREEN,""};
+    btn[9] = {995,30,"ГРИБЫ",TX_BLACK,TX_GREY,"грибы"};
 
 
-    pic Mp[countMp];
-    Mp[0] = {0,100,120,120,700,700,txLoadImage("картинки\\вазы\\ваза1.bmp"),false,"ВАЗЫ","картинки\\вазы\\ваза1.bmp"};
-    Mp[1] = {0,220,120,120,700,700,txLoadImage("картинки\\вазы\\ваза2.bmp"),false,"ВАЗЫ","картинки\\вазы\\ваза2.bmp"};
-    Mp[2] = {0,340,120,120,700,700,txLoadImage("картинки\\вазы\\ваза3.bmp"),false,"ВАЗЫ","картинки\\вазы\\ваза3.bmp"};
+    pic Mp[100];
 
-    Mp[3] = {0,100,120,120,500,500,txLoadImage("картинки\\фруктовница\\фрукт1.bmp"),false,"ФРУКТОВНИЦЫ","картинки\\фруктовница\\фрукт1.bmp"};
-    Mp[4] = {0,220,120,120,500,500,txLoadImage("картинки\\фруктовница\\фрукт2.bmp"),false,"ФРУКТОВНИЦЫ","картинки\\фруктовница\\фрукт2.bmp"};
-    Mp[5] = {0,340,120,120,500,500,txLoadImage("картинки\\фруктовница\\фрукт3.bmp"),false,"ФРУКТОВНИЦЫ","картинки\\фруктовница\\фрукт3.bmp"};
+    countMp = readDir("картинки/вазы/",countMp,Mp);
+    countMp = readDir("картинки/фруктовницы/",countMp,Mp);
+    countMp = readDir("картинки/цветы/",countMp,Mp);
+    countMp = readDir("картинки/фрукты/",countMp,Mp);
+    countMp = readDir("картинки/ягоды/",countMp,Mp);
+    countMp = readDir("картинки/грибы/",countMp,Mp);
 
-    Mp[6] = {0,100,120,120,200,266,txLoadImage("картинки\\цветы\\цветок1.bmp"),false,"ЦВЕТЫ","картинки\\цветы\\цветок1.bmp"};
-    Mp[7] = {0,220,120,120,200,266,txLoadImage("картинки\\цветы\\цветок2.bmp"),false,"ЦВЕТЫ","картинки\\цветы\\цветок2.bmp"};
-    Mp[8] = {0,340,120,120,200,266,txLoadImage("картинки\\цветы\\цветок3.bmp"),false,"ЦВЕТЫ","картинки\\цветы\\цветок3.bmp"};
 
-    Mp[9] = {0,100,120,120,150,150,txLoadImage("картинки\\фрукты\\фрукт1.bmp"),false,"ФРУКТЫ","картинки\\фрукты\\фрукт1.bmp"};
-    Mp[10] = {0,220,120,120,150,150,txLoadImage("картинки\\фрукты\\фрукт2.bmp"),false,"ФРУКТЫ","картинки\\фрукты\\фрукт2.bmp"};
-    Mp[11] = {0,340,120,120,150,150,txLoadImage("картинки\\фрукты\\фрукт3.bmp"),false,"ФРУКТЫ","картинки\\фрукты\\фрукт3.bmp"};
+
+    for (int i=0; i<countMp; i++)
+    {
+        Mp[i].visble=false;
+        int pos1 = Mp[i].adress.find("/");
+        int pos2 = Mp[i].adress.find("/",pos1+1);
+        Mp[i].category = Mp[i].adress.substr(pos1+1,pos2-(pos1+1));
+        Mp[i].W = wight(Mp[i].adress);
+        Mp[i].H = height(Mp[i].adress);
+        if(Mp[i].category == "вазы" )
+        {
+            Mp[i].w = Mp[i].W/6;
+            Mp[i].h = Mp[i].H/6;
+        }
+        else
+        {
+            Mp[i].w = 120;
+            Mp[i].h = 120;
+        }
+        Mp[i].name = txLoadImage(Mp[i].adress.c_str());
+    }
+
 
     pic Cp[100];
+    HDC fon = txLoadImage("картинки/фоны/фон1.bmp");
 
     while(!btn[8].click())
     {
@@ -157,8 +218,21 @@ int main()
         txBegin();
         if(page == "kartina")
         {
-            space();
+            space(fon);
             //рисование кнопка
+            if(GetAsyncKeyState ('1'))
+            {
+                fon = txLoadImage("картинки/фоны/фон1.bmp");
+            }
+            if(GetAsyncKeyState ('2'))
+            {
+                fon = txLoadImage("картинки/фоны/фон2.bmp");
+            }
+            if(GetAsyncKeyState ('3'))
+            {
+                fon = txLoadImage("картинки/фоны/фон3.bmp");
+            }
+
             for (int i=0; i<countbtn; i++)
             {
                 btn[i].draw();
@@ -177,7 +251,7 @@ int main()
                     {
                         txSleep(1);
                     }
-                    Cp[countCp] = {200,200,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].name,Mp[i].visble,Mp[i].category,Mp[i].adress};
+                    Cp[countCp] = {200,200,Mp[i].adress,Mp[i].name,Mp[i].W,Mp[i].H,Mp[i].W,Mp[i].H,Mp[i].category,Mp[i].visble};
                     countCp ++;
                 }
             }
@@ -257,6 +331,7 @@ int main()
                 out.open(FileName);
                 if (out.is_open())
                 {
+                    out << fon << std::endl;
                     for(int i=0; i<countCp; i++)
                     {
                         out << Cp[i].x << std::endl;
@@ -301,7 +376,7 @@ int main()
                     {
                         if(Mp[i].adress == adress)
                         {
-                            Cp[countCp] = {x,y,w,h,Mp[i].W,Mp[i].H,Mp[i].name,true,Mp[i].category,adress};
+                            Cp[countCp] = {x,y,adress,Mp[i].name,w,h,Mp[i].W,Mp[i].H,Mp[i].category,true};
                             countCp ++;
                         }
                     }

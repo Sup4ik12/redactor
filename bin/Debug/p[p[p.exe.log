@@ -1428,3 +1428,369 @@ Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.ex
 Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0045391C в функции _M_is_leaked() в файле d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0xFFFFFFFC в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x860 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0045391C in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_is_leaked() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x004827FB in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: swap() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0048A159 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: operator=() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x0044DE95 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: operator=() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0042CE27 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (173):
+
+    171:     btn[7] = {10,650,"О ПРОГРАММЕ",TX_WHITE,TX_GREEN,""};
+    172:     btn[8] = {10,720,"ВЫХОД",TX_WHITE,TX_GREEN,""};
+=>  173:     btn[9] = {1015,30,"ФОН",TX_BLACK,TX_GREY,"фон"};
+    174: 
+    175: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (152):
+
+    150: {
+    151:     txCreateWindow (1500, 800);
+=>  152:     txTextCursor (false);
+    153: 
+    154:     int countbtn = 9;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 21 2024 13:46:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 21 2024 13:46:45
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#1: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу 0x0045391C в функции _M_is_leaked() в файле d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h на строке 45. Попытка прочесть данные по адресу 0xFFFFFFFC в модуле C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x860 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0045391C in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: _M_is_leaked() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 1 0x004827FB in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: swap() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 2 0x0048A159 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: operator=() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 3 0x0044DE95 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: operator=() at d:/codeblocks/codeblocks/mingw/include/c++/4.8.1/debug/functions.h (45):
+
+     43:   // An arbitrary iterator pointer is not singular.
+     44:   inline bool
+=>   45:   __check_singular_aux(const void*) { return false; }
+     46: 
+     47:   // We may have an iterator that derives from _Safe_iterator_base but isn't
+
+# 4 0x0042CE27 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (173):
+
+    171:     btn[7] = {10,650,"О ПРОГРАММЕ",TX_WHITE,TX_GREEN,""};
+    172:     btn[8] = {10,720,"ВЫХОД",TX_WHITE,TX_GREEN,""};
+=>  173:     btn[9] = {1015,30,"ФОН",TX_BLACK,TX_GREY,"фон"};
+    174: 
+    175: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in int main() at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (152):
+
+    150: {
+    151:     txCreateWindow (1500, 800);
+=>  152:     txTextCursor (false);
+    153: 
+    154:     int countbtn = 9;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 21 2024 13:46:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 21 2024 13:46:44
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe, файл: C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h, строка: 13648, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x19EC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004222C4 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txBitBlt() at C:/Users/user/Documents/Arduino/libraries/TX/TXLib.h (13648)
+
+# 1 0x0042C1BD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: space() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+# 2 0x0042D511 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (213):
+
+    211:         if(page == "kartina")
+    212:         {
+=>  213:             space(fon);
+    214:             //рисование кнопка
+    215:             if(GetAsyncKeyState ('1'))
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h (13648):
+
+  13646:     {
+  13647: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13648: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13649: 
+  13650: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void space(HDC) at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 21 2024 14:16:02, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 21 2024 14:16:25
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe, файл: C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h, строка: 13648, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x6FC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004222C4 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txBitBlt() at C:/Users/user/Documents/Arduino/libraries/TX/TXLib.h (13648)
+
+# 1 0x0042C1BD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: space() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+# 2 0x0042D5CB in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (221):
+
+    219:         if(page == "kartina")
+    220:         {
+=>  221:             space(fon);
+    222:             //рисование кнопка
+    223:             if(GetAsyncKeyState ('1'))
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h (13648):
+
+  13646:     {
+  13647: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13648: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13649: 
+  13650: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void space(HDC) at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 21 2024 14:34:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 21 2024 14:46:05
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe, файл: C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h, строка: 13648, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050A2FC (32-bit), Flags: CMdRe0, Thread: 0x2728 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004222C4 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txBitBlt() at C:/Users/user/Documents/Arduino/libraries/TX/TXLib.h (13648)
+
+# 1 0x0042C1BD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: space() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+# 2 0x0042D5CB in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (221):
+
+    219:         if(page == "kartina")
+    220:         {
+=>  221:             space(fon);
+    222:             //рисование кнопка
+    223:             if(GetAsyncKeyState ('1'))
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h (13648):
+
+  13646:     {
+  13647: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13648: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13649: 
+  13650: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void space(HDC) at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (65):
+
+     63:     txSetFillColor(TX_TRANSPARENT);
+     64:     txRectangle(150,100,1490,790);
+=>   65:     txBitBlt(txDC(), 150,100,1340,690,image);
+     66: 
+     67: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 21 2024 14:46:13, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 21 2024 14:46:32
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------
