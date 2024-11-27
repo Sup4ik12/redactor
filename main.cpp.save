@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include "dirent.h"
-
 using namespace std;
 
 struct btn
@@ -30,7 +29,6 @@ struct btn
         return(txMouseX() < x+150 and txMouseX() > x and txMouseY() > y and txMouseY() < y+50 and txMouseButtons() == 1);
     }
 };
-
 struct pic
 {
     int x;
@@ -55,7 +53,6 @@ struct pic
         return(txMouseX() < x+w and txMouseX() > x and txMouseY() > y and txMouseY() < y+h and txMouseButtons() == 1);
     }
 };
-
 void space(HDC image)
 {
     //рабочая область
@@ -65,7 +62,6 @@ void space(HDC image)
     txBitBlt(txDC(), 150,100,1340,690,image);
 
 }
-
 string dialog(bool sSave)
 {
     string FileName = "";
@@ -147,12 +143,120 @@ int readDir(string DirAdress,int countFile,pic Mp[])
     }
     return countFile;
 }
+inline int GetFilePointer(HANDLE FileHandle)
+{
+    return SetFilePointer(FileHandle, 0, 0, FILE_CURRENT);
+}
+
+bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)
+{
+    bool Success=0;
+    HBITMAP OffscrBmp=NULL;
+    HDC OffscrDC=NULL;
+    LPBITMAPINFO lpbi=NULL;
+    LPVOID lpvBits=NULL;
+    HANDLE BmpFile=INVALID_HANDLE_VALUE;
+    BITMAPFILEHEADER bmfh;
+    if ((OffscrBmp = CreateCompatibleBitmap(bitmapDC, width, height)) == NULL)
+        return 0;
+    if ((OffscrDC = CreateCompatibleDC(bitmapDC)) == NULL)
+        return 0;
+    HBITMAP OldBmp = (HBITMAP)SelectObject(OffscrDC, OffscrBmp);
+    BitBlt(OffscrDC, 0, 0, width, height, bitmapDC, 0, 0, SRCCOPY);
+    if ((lpbi = (LPBITMAPINFO)(new char[sizeof(BITMAPINFOHEADER) + 256 * sizeof(RGBQUAD)])) == NULL)
+        return 0;
+    ZeroMemory(&lpbi->bmiHeader, sizeof(BITMAPINFOHEADER));
+    lpbi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+    SelectObject(OffscrDC, OldBmp);
+    if (!GetDIBits(OffscrDC, OffscrBmp, 0, height, NULL, lpbi, DIB_RGB_COLORS))
+        return 0;
+    if ((lpvBits = new char[lpbi->bmiHeader.biSizeImage]) == NULL)
+        return 0;
+    if (!GetDIBits(OffscrDC, OffscrBmp, 0, height, lpvBits, lpbi, DIB_RGB_COLORS))
+        return 0;
+    if ((BmpFile = CreateFile(filename,
+                        GENERIC_WRITE,
+                        0, NULL,
+                        CREATE_ALWAYS,
+                        FILE_ATTRIBUTE_NORMAL,
+                        NULL)) == INVALID_HANDLE_VALUE)
+        return 0;
+    DWORD Written;
+    bmfh.bfType = 19778;
+    bmfh.bfReserved1 = bmfh.bfReserved2 = 0;
+    if (!WriteFile(BmpFile, &bmfh, sizeof(bmfh), &Written, NULL))
+        return 0;
+    if (Written < sizeof(bmfh))
+        return 0;
+    if (!WriteFile(BmpFile, &lpbi->bmiHeader, sizeof(BITMAPINFOHEADER), &Written, NULL))
+        return 0;
+    if (Written < sizeof(BITMAPINFOHEADER))
+        return 0;
+    int PalEntries;
+    if (lpbi->bmiHeader.biCompression == BI_BITFIELDS)
+        PalEntries = 3;
+    else PalEntries = (lpbi->bmiHeader.biBitCount <= 8) ?
+                      (int)(1 << lpbi->bmiHeader.biBitCount) : 0;
+    if(lpbi->bmiHeader.biClrUsed)
+    PalEntries = lpbi->bmiHeader.biClrUsed;
+    if(PalEntries){
+    if (!WriteFile(BmpFile, &lpbi->bmiColors, PalEntries * sizeof(RGBQUAD), &Written, NULL))
+        return 0;
+        if (Written < PalEntries * sizeof(RGBQUAD))
+            return 0;
+    }
+    bmfh.bfOffBits = GetFilePointer(BmpFile);
+    if (!WriteFile(BmpFile, lpvBits, lpbi->bmiHeader.biSizeImage, &Written, NULL))
+        return 0;
+    if (Written < lpbi->bmiHeader.biSizeImage)
+        return 0;
+    bmfh.bfSize = GetFilePointer(BmpFile);
+    SetFilePointer(BmpFile, 0, 0, FILE_BEGIN);
+    if (!WriteFile(BmpFile, &bmfh, sizeof(bmfh), &Written, NULL))
+        return 0;
+    if (Written < sizeof(bmfh))
+        return 0;
+
+    CloseHandle (BmpFile);
+
+    delete [] (char*)lpvBits;
+    delete [] lpbi;
+
+    DeleteDC (OffscrDC);
+    DeleteObject (OffscrBmp);
+
+
+    return 1;
+}
+
+bool ScreenCapture(int x, int y, int width, int height, char *filename, HWND hwnd)
+{
+    HDC hDC = GetDC(hwnd);
+    HDC hDc = CreateCompatibleDC(hDC);
+
+    HBITMAP hBmp = CreateCompatibleBitmap(hDC, width, height);
+
+    HGDIOBJ old= SelectObject(hDc, hBmp);
+    BitBlt(hDc, 0, 0, width, height, hDC, x, y, SRCCOPY);
+
+    bool ret = SaveBMPFile(filename, hBmp, hDc, width, height);
+
+    SelectObject(hDc, old);
+
+    DeleteObject(hBmp);
+
+    DeleteDC (hDc);
+    ReleaseDC (hwnd, hDC);
+
+    return ret;
+}
+
 int main()
 {
     txCreateWindow (1500, 800);
     txTextCursor (false);
 
-    int countbtn = 10;
+    int countbtn = 11;
     int countMp = 0;
     int countCp = 0;
 
@@ -172,10 +276,9 @@ int main()
     btn[7] = {10,650,"О ПРОГРАММЕ",TX_WHITE,TX_GREEN,""};
     btn[8] = {10,720,"ВЫХОД",TX_WHITE,TX_GREEN,""};
     btn[9] = {995,30,"ГРИБЫ",TX_BLACK,TX_GREY,"грибы"};
-
+    btn[10] = {10,580,"СНИМОК ЭКРАНА",TX_WHITE,TX_GREEN,""};
 
     pic Mp[100];
-
     countMp = readDir("картинки/вазы/",countMp,Mp);
     countMp = readDir("картинки/фруктовницы/",countMp,Mp);
     countMp = readDir("картинки/цветы/",countMp,Mp);
@@ -208,7 +311,8 @@ int main()
 
 
     pic Cp[100];
-    HDC fon = txLoadImage("картинки/фоны/фон1.bmp");
+    string AdrFon = "картинки/фоны/фон1.bmp";
+    HDC fon = txLoadImage(AdrFon.c_str());
 
     while(!btn[8].click())
     {
@@ -222,17 +326,19 @@ int main()
             //рисование кнопка
             if(GetAsyncKeyState ('1'))
             {
-                fon = txLoadImage("картинки/фоны/фон1.bmp");
+                AdrFon = "картинки/фоны/фон1.bmp";
+                fon = txLoadImage(AdrFon.c_str());
             }
             if(GetAsyncKeyState ('2'))
             {
-                fon = txLoadImage("картинки/фоны/фон2.bmp");
+                AdrFon = "картинки/фоны/фон2.bmp";
+                fon = txLoadImage(AdrFon.c_str());
             }
             if(GetAsyncKeyState ('3'))
             {
-                fon = txLoadImage("картинки/фоны/фон3.bmp");
+                AdrFon = "картинки/фоны/фон3.bmp";
+                fon = txLoadImage(AdrFon.c_str());
             }
-
             for (int i=0; i<countbtn; i++)
             {
                 btn[i].draw();
@@ -305,7 +411,7 @@ int main()
             //увеличение и уменьшение размеров
             if(vibor>=0)
             {
-                if(GetAsyncKeyState(VK_OEM_PLUS))
+                if(GetAsyncKeyState(VK_OEM_PLUS) and Cp[vibor] >= 10)
                 {
                     Cp[vibor].w = Cp[vibor].w * 1.01;
                     Cp[vibor].h = Cp[vibor].h * 1.01;
@@ -316,12 +422,12 @@ int main()
                     Cp[vibor].h = Cp[vibor].h / 1.01;
                 }
             }
-            if(vibor>=0)
+            if(vibor>=0 and GetAsyncKeyState(VK_DELETE))
             {
-                if(GetAsyncKeyState(VK_DELETE))
-                {
-                    Cp[vibor].visble = false;
-                }
+                Cp[vibor] = Cp[countCp-1];
+                countCp--;
+                vibor = -1;
+                MouseUp = true;
             }
             if(btn[5].click())
             {
@@ -331,7 +437,7 @@ int main()
                 out.open(FileName);
                 if (out.is_open())
                 {
-                    out << fon << std::endl;
+                    out << AdrFon << std::endl;
                     for(int i=0; i<countCp; i++)
                     {
                         out << Cp[i].x << std::endl;
@@ -355,8 +461,16 @@ int main()
                 char data[50];
 
                 std::ifstream in(FileName); // окрываем файл для чтения
+                if(in.good())
+                {
+                    in.getline(data, 50);
+                    AdrFon = data;
+                    fon = txLoadImage(AdrFon.c_str());
+                }
                 while (in.good())
                 {
+
+
                     in.getline(data, 50);
                     int x = atoi(data);
 
@@ -372,6 +486,7 @@ int main()
                     in.getline(data, 50);
                     int h = atoi(data);
 
+
                     for (int i=0; i<countMp; i++)
                     {
                         if(Mp[i].adress == adress)
@@ -386,6 +501,11 @@ int main()
             if(btn[7].click())
             {
                 page = "help";
+            }
+            if(btn[10].click())
+            {
+                ScreenCapture(150,100,1340,690, "1.bmp", txWindow());
+                txMessageBox("Сохранено в 1.bmp");
             }
         }
         if(page == "help")

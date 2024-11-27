@@ -1794,3 +1794,69 @@ Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.ex
 Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe, файл: C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h, строка: 13648, функция: bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x0050B2FC (32-bit), Flags: CMdRe0, Thread: 0x7B8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004222C4 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: txBitBlt() at C:/Users/user/Documents/Arduino/libraries/TX/TXLib.h (13648)
+
+# 1 0x0042C1BD in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: space() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (62):
+
+     60:     txSetFillColor(TX_TRANSPARENT);
+     61:     txRectangle(150,100,1490,790);
+=>   62:     txBitBlt(txDC(), 150,100,1340,690,image);
+     63: 
+     64: }
+
+# 2 0x0042E979 in C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe: main() at C:/Users/user/Downloads/redactor-main/redactor-main/main.cpp (468):
+
+    466:                     in.getline(data, 50);
+    467:                     AdrFon = data;
+=>  468:                     space(txLoadImage(AdrFon.c_str()));
+    469:                 }
+    470:                 while (in.good())
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txBitBlt(HDC, double, double, double, double, HDC, double, double, unsigned int) at C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h (13648):
+
+  13646:     {
+  13647: $1  if (_TX_HDC_FAILED (destImage))   return false;
+=>13648: $   if (_TX_HDC_FAILED (sourceImage)) return false;
+  13649: 
+  13650: $   POINT size = txGetExtent (sourceImage);
+
+# 1 in void space(HDC) at C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp (62):
+
+     60:     txSetFillColor(TX_TRANSPARENT);
+     61:     txRectangle(150,100,1490,790);
+=>   62:     txBitBlt(txDC(), 150,100,1340,690,image);
+     63: 
+     64: }
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	C:\Users\user\Documents\Arduino\libraries\TX\TXLib.h
+Compiled:	Nov 27 2024 12:01:28, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Nov 27 2024 12:01:49
+
+Run file:	C:\Users\user\Downloads\redactor-main\redactor-main\bin\Debug\p[p[p.exe
+Directory:	C:\Users\user\Downloads\redactor-main\redactor-main
+
+--------------------------------------------------

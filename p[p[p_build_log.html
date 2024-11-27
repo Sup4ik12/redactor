@@ -4,98 +4,116 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 <body>
 <tt>
-Build started on: <u>21-11-2024 at 15:02.18</u><br />
-Build ended on: <u>21-11-2024 at 15:02.32</u><p />
+Build started on: <u>27-11-2024 at 12:22.14</u><br />
+Build ended on: <u>27-11-2024 at 12:22.28</u><p />
 <b>-------------- Build: Debug in p[p[p (compiler: NOT FOR PROJECTS! = MinGW GCC + Strict + Fast + Save (Requires Git))---------------</b><br />
 g++git-auto.bat "C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp" -o bin\Debug\p[p[p.exe -mwindows  -Wall -fexceptions  -g  -Wall -Wextra -Weffc++ -Wcast-align -Wcast-qual -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-security -Wformat=2 -Wignored-qualifiers -Winit-self -Winline -Wlogical-op -Wmain -Wmissing-declarations -Wno-missing-field-initializers -Wmissing-include-dirs -Wnon-virtual-dtor -Woverloaded-virtual -Wpointer-arith -Wredundant-decls -Wshadow -Wsign-promo -Wstack-usage=8192 -Wstrict-aliasing -Wstrict-null-sentinel -Wswitch-default -Wswitch-enum -Wtype-limits -Wundef -Wunreachable-code -Wwrite-strings -fexceptions -g -pipe -D_DEBUG -D_EJUDGE_CLIENT_SIDE -D_EJC<br />
 ------------------------------------------------------------------------------------------------------<br />
 Compilation ERRORS:<br />
 <br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'void space(HDC)':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:59:6: warning: no previous declaration for 'void space(HDC)' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:56:6: warning: no previous declaration for 'void space(HDC)' [-Wmissing-declarations]</font><br />
  void space(HDC image)<br />
       ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'std::string dialog(bool)':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:69:8: warning: no previous declaration for 'std::string dialog(bool)' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:65:8: warning: no previous declaration for 'std::string dialog(bool)' [-Wmissing-declarations]</font><br />
  string dialog(bool sSave)<br />
         ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:75:12: warning: unused variable 'hf' [-Wunused-variable]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:71:12: warning: unused variable 'hf' [-Wunused-variable]</font><br />
      HANDLE hf;<br />
             ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'int wight(std::string)':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:109:5: warning: no previous declaration for 'int wight(std::string)' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:105:5: warning: no previous declaration for 'int wight(std::string)' [-Wmissing-declarations]</font><br />
  int wight(string adress)<br />
      ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'int height(std::string)':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:118:5: warning: no previous declaration for 'int height(std::string)' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:114:5: warning: no previous declaration for 'int height(std::string)' [-Wmissing-declarations]</font><br />
  int height(string adress)<br />
      ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'int readDir(std::string, int, pic*)':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:127:5: warning: no previous declaration for 'int readDir(std::string, int, pic*)' [-Wmissing-declarations]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:123:5: warning: no previous declaration for 'int readDir(std::string, int, pic*)' [-Wmissing-declarations]</font><br />
  int readDir(string DirAdress,int countFile,pic Mp[])<br />
      ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:135:48: warning: suggest parentheses around assignment used as truth value [-Wparentheses]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:131:48: warning: suggest parentheses around assignment used as truth value [-Wparentheses]</font><br />
          while (direntStruct = readdir(directory))<br />
                                                 ^<br />
+C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'bool SaveBMPFile(char*, HBITMAP, HDC, int, int)':<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:151:6: warning: no previous declaration for 'bool SaveBMPFile(char*, HBITMAP, HDC, int, int)' [-Wmissing-declarations]</font><br />
+ bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)<br />
+      ^<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:153:10: warning: unused variable 'Success' [-Wunused-variable]</font><br />
+     bool Success=0;<br />
+          ^<br />
+C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: At global scope:<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:151:6: warning: unused parameter 'bitmap' [-Wunused-parameter]</font><br />
+ bool SaveBMPFile(char *filename, HBITMAP bitmap, HDC bitmapDC, int width, int height)<br />
+      ^<br />
+C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'bool ScreenCapture(int, int, int, int, char*, HWND)':<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:232:6: warning: no previous declaration for 'bool ScreenCapture(int, int, int, int, char*, HWND)' [-Wmissing-declarations]</font><br />
+ bool ScreenCapture(int x, int y, int width, int height, char *filename, HWND hwnd)<br />
+      ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In constructor 'btn::btn()':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::x' should be initialized in the member initialization list [-Weffc++]</font><br />
  struct btn<br />
         ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::y' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::text' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::textC' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::vn' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:8:8: warning: 'btn::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::text' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::textC' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::vn' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:7:8: warning: 'btn::category' should be initialized in the member initialization list [-Weffc++]</font><br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'int main()':<br />
-C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:164:21: note: synthesized method 'btn::btn()' first required here <br />
+C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:268:21: note: synthesized method 'btn::btn()' first required here <br />
      btn btn[countbtn];<br />
                      ^<br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In constructor 'pic::pic()':<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::x' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::x' should be initialized in the member initialization list [-Weffc++]</font><br />
  struct pic<br />
         ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::y' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::adress' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::name' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::w' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::h' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::W' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::H' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::category' should be initialized in the member initialization list [-Weffc++]</font><br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:34:8: warning: 'pic::visble' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::y' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::adress' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::name' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::w' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::h' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::W' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::H' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::category' should be initialized in the member initialization list [-Weffc++]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:32:8: warning: 'pic::visble' should be initialized in the member initialization list [-Weffc++]</font><br />
 C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp: In function 'int main()':<br />
-C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:177:15: note: synthesized method 'pic::pic()' first required here <br />
+C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:281:15: note: synthesized method 'pic::pic()' first required here <br />
      pic Mp[100];<br />
                ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:297:41: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:399:41: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                  Cp[vibor].x = txMouseX()-Cp[vibor].w/2;<br />
                                          ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:298:41: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:400:41: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
                  Cp[vibor].y = txMouseY()-Cp[vibor].h/2;<br />
                                          ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:314:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
-                     Cp[vibor].w = Cp[vibor].w * 1.01;<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:416:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+                     Cp[vibor].w = Cp[vibor].w * 1.03;<br />
                                                ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:315:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
-                     Cp[vibor].h = Cp[vibor].h * 1.01;<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:417:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+                     Cp[vibor].h = Cp[vibor].h * 1.03;<br />
                                                ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:319:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
-                     Cp[vibor].w = Cp[vibor].w / 1.01;<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:421:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+                     Cp[vibor].w = Cp[vibor].w * 0.97;<br />
                                                ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:320:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
-                     Cp[vibor].h = Cp[vibor].h / 1.01;<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:422:47: warning: conversion to 'int' from 'double' may alter its value [-Wconversion]</font><br />
+                     Cp[vibor].h = Cp[vibor].h * 0.97;<br />
                                                ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:159:10: warning: unused variable 'str' [-Wunused-variable]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:515:68: warning: deprecated conversion from string constant to 'char*' [-Wwrite-strings]</font><br />
+                 ScreenCapture(150,100,1340,690, "1.bmp", txWindow());<br />
+                                                                    ^<br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:263:10: warning: unused variable 'str' [-Wunused-variable]</font><br />
      char str[50];<br />
           ^<br />
-<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:424:1: warning: stack usage might be unbounded [-Wstack-usage=]</font><br />
+<font color="#0000ff">C:\Users\user\Downloads\redactor-main\redactor-main\main.cpp:545:1: warning: stack usage might be unbounded [-Wstack-usage=]</font><br />
  }<br />
  ^<br />
 ------------------------------------------------------------------------------------------------------<br />
 Autosaving to the Git repository in C:/Users/user/Downloads/redactor-main/redactor-main/.git-auto/... <br />
-Output size is 2,29 MB<br />
+Output size is 2,30 MB<br />
 <font color="#0000ff">Process terminated with status 0 (0 minutes, 14 seconds)</font><br />
-<font color="#0000ff">0 errors, 31 warnings (0 minutes, 14 seconds)</font><br />
+<font color="#0000ff">0 errors, 36 warnings (0 minutes, 14 seconds)</font><br />
 </tt>
 </body>
 </html>
