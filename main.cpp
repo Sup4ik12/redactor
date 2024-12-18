@@ -20,7 +20,7 @@ struct btn
         txSetColor(TX_BLACK,5);
         txSetFillColor(vn);
         Win32::RoundRect (txDC(), x,y, x+150, y+50, 52, 52);
-        txSelectFont("Times New Roman",20);
+        txSelectFont("Time New Roman",20);
         txSetColor(textC);
         txDrawText(x,y,x+150,y+50, text);
     }
@@ -389,7 +389,6 @@ int main()
                     vibor = i;
                     MouseUp = false;
                 }
-
             }
             //перемещение мышкой обьектов в центре
             if(vibor>=0)
@@ -407,7 +406,25 @@ int main()
                     }
                 }
             }
-
+            if(vibor>=0)
+            {
+                if(GetAsyncKeyState ('W'))
+                {
+                    Cp[vibor].y -= 5;
+                }
+                if(GetAsyncKeyState ('A'))
+                {
+                    Cp[vibor].x -= 5;
+                }
+                if(GetAsyncKeyState ('S'))
+                {
+                    Cp[vibor].y += 5;
+                }
+                if(GetAsyncKeyState ('D'))
+                {
+                    Cp[vibor].x += 5;
+                }
+            }
             //увеличение и уменьшение размеров
             if(vibor>=0)
             {
@@ -427,6 +444,14 @@ int main()
                     if(Cp[vibor].h < 50)
                     {
                         Cp[vibor].h = 51;
+                    }
+                    if(Cp[vibor].w > 500)
+                    {
+                        Cp[vibor].w = 490;
+                    }
+                    if(Cp[vibor].h > 500)
+                    {
+                        Cp[vibor].h = 490;
                     }
                 }
             }
@@ -522,9 +547,22 @@ int main()
             {
                 page = "kartina";
             }
-            txSelectFont("Times New Roman",55);
+            txSetFillColor(RGB(106,191,198));
+            txRectangle(50,30,1450,770);
+            txSelectFont("Comic Sans MC",45);
             txSetColor(TX_BLACK);
-            txDrawText(0,0,1500,800,"Чтобы вернуться нажмите ESC");
+            txDrawText(50,30,1450,100,"Программа составления натюрморта");
+            txDrawText(50,100,1450,250,"С помощью данной программы вы можете составлять собственные композиции\n"" натюрморта, сохранять и делится с друзьями своим творением");
+            txDrawText(50,250,1450,770,"ФУНКЦИОНАЛ:\n"
+            "Чтобы добавить картинку на рабочую область нажмите на кнопку\n"
+            "с соответсвующей категорией потом на картинку в меню\n"
+            "Передвежение картинок мышкой и клавишами WASD, Увеличение и уменьшение '+' и '-' соотвественно\n"
+            "Чтобы удалить картинку нажмите 'Delete'\n"
+            "Можно сохранять и загружать композиции если нажать на эти кнопки\n"
+            "Если нажать снимок экрана композиция сохраниться в формате 'bmp'\n"
+            "Все что вы сохраняете отправляется в папку проекта\n"
+            "Выход из программы осуществляется с помощью кнопки 'ВЫХОД'\n"
+            "Чтобы выйти в меню нажмите 'ESC'");
         }
         txEnd();
     }

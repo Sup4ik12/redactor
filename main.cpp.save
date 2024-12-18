@@ -411,15 +411,23 @@ int main()
             //увеличение и уменьшение размеров
             if(vibor>=0)
             {
-                if(GetAsyncKeyState(VK_OEM_PLUS) and Cp[vibor] >= 10)
+                if(GetAsyncKeyState(VK_OEM_PLUS))
                 {
-                    Cp[vibor].w = Cp[vibor].w * 1.01;
-                    Cp[vibor].h = Cp[vibor].h * 1.01;
+                    Cp[vibor].w = Cp[vibor].w * 1.03;
+                    Cp[vibor].h = Cp[vibor].h * 1.03;
                 }
                 if(GetAsyncKeyState(VK_OEM_MINUS))
                 {
-                    Cp[vibor].w = Cp[vibor].w / 1.01;
-                    Cp[vibor].h = Cp[vibor].h / 1.01;
+                    Cp[vibor].w = Cp[vibor].w * 0.97;
+                    Cp[vibor].h = Cp[vibor].h * 0.97;
+                    if(Cp[vibor].w < 50)
+                    {
+                        Cp[vibor].w = 51;
+                    }
+                    if(Cp[vibor].h < 50)
+                    {
+                        Cp[vibor].h = 51;
+                    }
                 }
             }
             if(vibor>=0 and GetAsyncKeyState(VK_DELETE))
@@ -514,8 +522,22 @@ int main()
             {
                 page = "kartina";
             }
-            txSelectFont("Times New Roman",55);
-            txDrawText(0,0,1500,800,"Чтобы вернуться нажмите ESC");
+            txSetFillColor(RGB(106,191,198));
+            txRectangle(50,30,1450,770)
+            txSelectFont("Times New Roman",45);
+            txSetColor(TX_BLACK);
+            txDrawText(50,30,1450,100,"Программа составления натюрморта");
+            txDrawText(50,100,1450,250,"С помощью данной программы вы можете составлять собственные композиции натюрморта, сохранять и делится с друзьями своим творением");
+            txDrawText(50,250,1450,770,"ФУНКЦИОНАЛ:\n"
+            "Чтобы добавить картинку на рабочую область нажмите на кнопку\n"
+            "с соответсвующей категорией потом на картинку в меню\n"
+            "Передвежение картинок мышкой, Увеличение и уменьшение '+' и '-' соотвественно\n"
+            "Чтобы удалить картинку нажмите 'Delete'\n"
+            "Можно сохранять и загружать композиции если нажать на эти кнопки\n"
+            "Если нажать снимок экрана композиция сохраниться в формате 'bmp'\n"
+            "Все что вы сохраняете отправляется в папку проекта\n"
+            "Выход из программы осуществляется с помощью кнопки 'ВЫХОД'\n""\n"
+            "Чтобы выйти в меню нажмите 'ESC'");
         }
         txEnd();
     }
