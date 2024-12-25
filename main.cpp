@@ -437,7 +437,9 @@ int main()
                 {
                     Cp[vibor].w = Cp[vibor].w * 0.97;
                     Cp[vibor].h = Cp[vibor].h * 0.97;
-                    if(Cp[vibor].w < 50)
+
+                }
+                if(Cp[vibor].w < 50)
                     {
                         Cp[vibor].w = 51;
                     }
@@ -453,7 +455,6 @@ int main()
                     {
                         Cp[vibor].h = 490;
                     }
-                }
             }
             if(vibor>=0 and GetAsyncKeyState(VK_DELETE))
             {
@@ -549,7 +550,7 @@ int main()
             }
             txSetFillColor(RGB(106,191,198));
             txRectangle(50,30,1450,770);
-            txSelectFont("Comic Sans MC",45);
+            txSelectFont("Comic Sans MC",42);
             txSetColor(TX_BLACK);
             txDrawText(50,30,1450,100,"Программа составления натюрморта");
             txDrawText(50,100,1450,250,"С помощью данной программы вы можете составлять собственные композиции\n"" натюрморта, сохранять и делится с друзьями своим творением");
